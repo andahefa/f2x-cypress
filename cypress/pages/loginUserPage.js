@@ -1,10 +1,10 @@
-class RegisterUserPage {
+class LoginUserPage {
     constructor() {
         this.baseUrl = 'https://reqres.in/api';
-        this.endpoint = '/register';
+        this.endpoint = '/login';
       }
     
-      registerUser(email, password) {
+      loginUser(email, password) {
         return cy.request({
           method: 'POST', 
           url: this.baseUrl + this.endpoint,
@@ -12,11 +12,17 @@ class RegisterUserPage {
           failOnStatusCode: false});
       }
     
-      validateRegistration(response) {
+      validateLoginSuccessfully(response) {
+        cy.log(response.body.token)
         expect(response.status).to.eq(200);
         expect(response.body).to.have.property('token');
-        expect(response.body).to.have.property('id');
       }
+
+      validateLoginFail(response) {
+        expect(response.status).to.eq(400);
+        expect(response.body.error).to.eq('user not found');
+      }
+
   }
 
-  module.exports = new RegisterUserPage();
+  module.exports = new LoginUserPage();

@@ -1,4 +1,5 @@
 const userPage = require("../pages/consultUserPage")
+const loginUserPage = require("../pages/loginUserPage")
 const registerUserPage = require("../pages/registerUserPage")
 const updateUserPage = require("../pages/updateUserPage")
 
@@ -46,6 +47,32 @@ describe('Update user', () => {
 
     updateUserPage.updateUser(userData.name, userData.job).then((response) => {
       updateUserPage.validateUpdate(response);
+    });
+  });
+
+})
+
+describe('Login user', () => {
+
+  it('Login user successfully', () => {
+    const userData = {
+      email: 'eve.holt@reqres.in',
+      password: 'cityslicka',
+    };
+
+    loginUserPage.loginUser(userData.email, userData.password).then((response) => {
+      loginUserPage.validateLoginSuccessfully(response);
+    });
+  });
+
+  it('Login user fail', () => {
+    const userData = {
+      email: 'eve.holt@reqres.indd',
+      password: 'cityslicka',
+    };
+
+    loginUserPage.loginUser(userData.email, userData.password).then((response) => {
+      loginUserPage.validateLoginFail(response);
     });
   });
 
