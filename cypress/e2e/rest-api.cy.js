@@ -1,8 +1,9 @@
 const userPage = require("../pages/consultUserPage")
 const registerUserPage = require("../pages/registerUserPage")
+const updateUserPage = require("../pages/updateUserPage")
 
-describe('Validation consult user', () => {
-  it('validation consult user successfully', () => {
+describe('Consult user', () => {
+  it('Consult user successfully', () => {
     const pageInfo = {
       pageNumber: 1,
     }
@@ -20,7 +21,7 @@ describe('Validation consult user', () => {
 })
 
 
-describe('Validation register user', () => {
+describe('Register user', () => {
 
   it('Register user successfully', () => {
     const userData = {
@@ -29,7 +30,22 @@ describe('Validation register user', () => {
     };
 
     registerUserPage.registerUser(userData.email, userData.password).then((response) => {
-      registerUserPage.validateRegistration(response, userData.email);
+      registerUserPage.validateRegistration(response);
+    });
+  });
+
+})
+
+describe('Update user', () => {
+
+  it('Update user successfully', () => {
+    const userData = {
+      name: 'morpheus',
+      job: 'zion resident',
+    };
+
+    updateUserPage.updateUser(userData.name, userData.job).then((response) => {
+      updateUserPage.validateUpdate(response);
     });
   });
 
