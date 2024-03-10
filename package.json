@@ -1,0 +1,15 @@
+{
+  "name": "f2x-cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cypress.config.js",
+  "scripts": {
+    "clean": "rimraf ./allure-results",
+    "prueba": "cypress run --headed --env allure=true",
+    "reporte": "allure generate allure-results --clean -o allure-report",
+    "abrir": "allure open",
+    "test": "npm run clean && npm run prueba && npm run reporte && npm run abrir"
+  },
+  "author": "",
+  "license": "ISC"
+}
