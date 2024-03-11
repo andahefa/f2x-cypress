@@ -1,6 +1,9 @@
 # Proyecto de Automatización
 
-Este proyecto utiliza cypress para automatizar pruebas. Para los reportes se usa allure. A continuación, se presentan los comandos de ejecución básicos:
+- Este proyecto utiliza cypress para automatizar pruebas de la API.
+- Para el reporte de pruebas, se usa allure. 
+
+A continuación, se presentan los comandos de ejecución básicos:
 
 ## Ejecución de pruebas
 
