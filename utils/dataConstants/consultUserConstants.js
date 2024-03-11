@@ -1,0 +1,5 @@
+const DATASUCCESSFULLY = {
+    pageNumber: 1,
+};
+
+export { DATASUCCESSFULLY as DATACONSULTUSERSUCCESSFULLY};

@@ -6,7 +6,8 @@ Este proyecto utiliza cypress para automatizar pruebas. Para los reportes se usa
 
 Para ejecutar el proyecto, se debe correr el siguiente comando:
 
-1. npm run test
+1. npm run browser:chrome
+2. npm run report:allure
 
 
 ## Reportes generados

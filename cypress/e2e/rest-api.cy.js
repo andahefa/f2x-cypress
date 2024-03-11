@@ -1,6 +1,7 @@
-const { DATALOGINUSERSUCCESSFULLY, DATALOGINUSERFAIL } = require("../../Utils/Constants/loginUserConstants")
-const { DATAREGISTERUSERSUCCESSFULLY, DATAREGISTERUSERFAIL } = require("../../Utils/Constants/registerUserConstants")
-const { DATAUPDATEUSERSUCCESSFULLY } = require("../../Utils/Constants/updateUserConstants")
+const { DATALOGINUSERSUCCESSFULLY, DATALOGINUSERFAIL } = require("../../Utils/dataConstants/loginUserConstants")
+const { DATAREGISTERUSERSUCCESSFULLY, DATAREGISTERUSERFAIL } = require("../../Utils/dataConstants/registerUserConstants")
+const { DATAUPDATEUSERSUCCESSFULLY } = require("../../Utils/dataConstants/updateUserConstants")
+const { DATACONSULTUSERSUCCESSFULLY } = require("../../utils/dataConstants/consultUserConstants")
 const userPage = require("../pages/consultUserPage")
 const deleteUserPage = require("../pages/deleteUserPage")
 const loginUserPage = require("../pages/loginUserPage")
@@ -9,12 +10,8 @@ const updateUserPage = require("../pages/updateUserPage")
 
 describe('Consult user', () => {
   it('Consult user successfully', () => {
-    const pageInfo = {
-      pageNumber: 1,
-    }
-    userPage.getUsers(pageInfo.pageNumber).then((response) => {
+    userPage.getUsers(DATACONSULTUSERSUCCESSFULLY.pageNumber).then((response) => {
       userPage.validatePageResponse(response);
-
       const data = response.body.data;
       for (const user of data) {
         userPage.validateUserProperties(user)
