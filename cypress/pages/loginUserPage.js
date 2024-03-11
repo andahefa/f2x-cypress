@@ -1,13 +1,12 @@
 class LoginUserPage {
     constructor() {
-        this.baseUrl = 'https://reqres.in/api';
         this.endpoint = '/login';
       }
     
       loginUser(email, password) {
         return cy.request({
           method: 'POST', 
-          url: this.baseUrl + this.endpoint,
+          url: this.endpoint,
           body: { email, password },
           failOnStatusCode: false});
       }

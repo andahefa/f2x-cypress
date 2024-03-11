@@ -1,4 +1,5 @@
 const userPage = require("../pages/consultUserPage")
+const deleteUserPage = require("../pages/deleteUserPage")
 const loginUserPage = require("../pages/loginUserPage")
 const registerUserPage = require("../pages/registerUserPage")
 const updateUserPage = require("../pages/updateUserPage")
@@ -31,7 +32,18 @@ describe('Register user', () => {
     };
 
     registerUserPage.registerUser(userData.email, userData.password).then((response) => {
-      registerUserPage.validateRegistration(response);
+      registerUserPage.validateRegistrationSuccessfully(response);
+    });
+  });
+
+  it('user registration with wrong email', () => {
+    const userData = {
+      email: 'eve.holt',
+      password: 'pistol',
+    };
+
+    registerUserPage.registerUser(userData.email, userData.password).then((response) => {
+      registerUserPage.validateRegistrationWithWrongEmail(response);
     });
   });
 
@@ -73,6 +85,16 @@ describe('Login user', () => {
 
     loginUserPage.loginUser(userData.email, userData.password).then((response) => {
       loginUserPage.validateLoginFail(response);
+    });
+  });
+
+})
+
+describe('Delete user', () => {
+
+  it('Delete user successfully', () => {
+    deleteUserPage.deleteUser().then((response) => {
+      deleteUserPage.validateDelete(response);
     });
   });
 

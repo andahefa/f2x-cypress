@@ -1,11 +1,10 @@
 class UpdateUserPage {
     constructor() {
-        this.baseUrl = 'https://reqres.in/api';
         this.endpoint = '/users/2';
       }
     
       updateUser(name, job) {
-        return cy.request('PUT', this.baseUrl + this.endpoint, { name, job });
+        return cy.request('PUT', this.endpoint, { name, job });
       }
     
       validateUpdate(response) {

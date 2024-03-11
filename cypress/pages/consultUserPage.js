@@ -1,12 +1,11 @@
 class UsersPage {
     constructor() {
-      this.baseUrl = 'https://reqres.in/api'
       this.endpoint = '/users'
     }
   
     getUsers(pageNumber = 1) {
       const param = `?page=${pageNumber}`
-      return cy.request('GET', this.baseUrl + this.endpoint + param)
+      return cy.request('GET', this.endpoint + param)
     }
   
     validatePageResponse(response) {
