@@ -1,3 +1,6 @@
+const { DATALOGINUSERSUCCESSFULLY, DATALOGINUSERFAIL } = require("../../Utils/Constants/loginUserConstants")
+const { DATAREGISTERUSERSUCCESSFULLY, DATAREGISTERUSERFAIL } = require("../../Utils/Constants/registerUserConstants")
+const { DATAUPDATEUSERSUCCESSFULLY } = require("../../Utils/Constants/updateUserConstants")
 const userPage = require("../pages/consultUserPage")
 const deleteUserPage = require("../pages/deleteUserPage")
 const loginUserPage = require("../pages/loginUserPage")
@@ -19,79 +22,49 @@ describe('Consult user', () => {
     });
 
   })
-
 })
 
 
 describe('Register user', () => {
-
   it('Register user successfully', () => {
-    const userData = {
-      email: 'eve.holt@reqres.in',
-      password: 'pistol',
-    };
-
-    registerUserPage.registerUser(userData.email, userData.password).then((response) => {
+    registerUserPage.registerUser(DATAREGISTERUSERSUCCESSFULLY.email, DATAREGISTERUSERSUCCESSFULLY.password).then((response) => {
       registerUserPage.validateRegistrationSuccessfully(response);
     });
   });
 
   it('user registration with wrong email', () => {
-    const userData = {
-      email: 'eve.holt',
-      password: 'pistol',
-    };
-
-    registerUserPage.registerUser(userData.email, userData.password).then((response) => {
+    registerUserPage.registerUser(DATAREGISTERUSERFAIL.email, DATAREGISTERUSERFAIL.password).then((response) => {
       registerUserPage.validateRegistrationWithWrongEmail(response);
     });
   });
-
 })
 
+
 describe('Update user', () => {
-
   it('Update user successfully', () => {
-    const userData = {
-      name: 'morpheus',
-      job: 'zion resident',
-    };
-
-    updateUserPage.updateUser(userData.name, userData.job).then((response) => {
+    updateUserPage.updateUser(DATAUPDATEUSERSUCCESSFULLY.name, DATAUPDATEUSERSUCCESSFULLY.job).then((response) => {
       updateUserPage.validateUpdate(response);
     });
   });
-
 })
 
+
 describe('Login user', () => {
-
   it('Login user successfully', () => {
-    const userData = {
-      email: 'eve.holt@reqres.in',
-      password: 'cityslicka',
-    };
-
-    loginUserPage.loginUser(userData.email, userData.password).then((response) => {
+    loginUserPage.loginUser(DATALOGINUSERSUCCESSFULLY.email, DATALOGINUSERSUCCESSFULLY.password).then((response) => {
       loginUserPage.validateLoginSuccessfully(response);
     });
   });
 
   it('Login user fail', () => {
-    const userData = {
-      email: 'eve.holt@reqres.indd',
-      password: 'cityslicka',
-    };
-
-    loginUserPage.loginUser(userData.email, userData.password).then((response) => {
+    loginUserPage.loginUser(DATALOGINUSERFAIL.email, DATALOGINUSERFAIL.password).then((response) => {
       loginUserPage.validateLoginFail(response);
     });
   });
-
 })
 
-describe('Delete user', () => {
 
+describe('Delete user', () => {
   it('Delete user successfully', () => {
     deleteUserPage.deleteUser().then((response) => {
       deleteUserPage.validateDelete(response);
